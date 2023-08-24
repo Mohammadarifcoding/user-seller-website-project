@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Font Awesome icons -->
+    <script
+      src="https://kit.fontawesome.com/6c9c8f09de.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Include Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body class="bg-white min-h-screen flex items-center justify-center">
+
+    <div class="container mx-auto p-8  bg-white rounded-lg shadow-lg">
+    
+        <div class="bg-white p-8 rounded-lg shadow-md flex items-center space-x-8">
+            <img class="w-20 h-20 rounded-full border-4 border-purple-400" src="images/record_0c01098654d74a4aac82f9fb25e16cef.jpg" alt="Seller Image">
+            <div class="text-center">
+                <h1 class="text-3xl font-semibold text-black" id="sellerName">Mohammad Arif</h1>
+                <p class="text-gray-600">Seller ID: SELLER123</p>
+                <p class="text-purple-600">Email: <span id="sellerEmail">mohammad.arif@gmail.com</span></p>
+                <p class="text-purple-600">Phone: <span id="sellerPhone">+8801860496257</span></p>
+                <p class="text-purple-600">Address: <span id="sellerAddress">Bagerhat,khulna</span></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-2">
+                <div class="bg-gradient-to-r from-green-500 to-blue-500 p-4 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold text-white mb-4">Product List</h2>
+                    <ul id="productList" class="space-y-4">
+                        <li class="flex items-center justify-between bg-white p-4 rounded-md shadow-md">
+                            <div class="flex items-center">
+
+                                <img src="images/Image Holder(1).png" alt="Product 1" class="w-16 h-16 object-contain mr-4">
+                                <div>
+
+                                    <span class="text-gray-800 font-semibold">Green Tea</span>
+                                    <!-- Product price -->
+                                    <p class="text-gray-600">$99.99</p>
+                                </div>
+                            </div>
+
+                            <button onclick='deleteproduct(this)' class="btn text-red-500">Delete</button>
+                        </li>
+                   
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="md:col-span-1">
+                <div class="bg-gradient-to-r from-indigo-400 to-purple-500 p-4 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold text-white mb-4">Add Product</h2>
+                    <div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-white">Product Image</label>
+                            <input type="file" id="productImage" accept="image/*">
+                            
+
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-white">Product Name</label>
+                            <input id="productName" type="text" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Product Name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-white">Price</label>
+                            <input id="productPrice" type="text" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Product Price">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-white">Product Description</label>
+                            <textarea id="productDescription" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" rows="3" placeholder="Product Description"></textarea>
+                        </div>
+                        <button id="productSubmit" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+        </div>
+        <div class="mt-8">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-lg shadow-xl">
+                <h2 class="text-xl font-semibold text-white mb-4">Total Overview</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-200 p-4 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-semibold text-blue-800 mb-2">Total Sell</h3>
+                        <p class="text-2xl text-blue-600">$10,000</p>
+                    </div>
+                    <div class="bg-green-200 p-4 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-semibold text-green-800 mb-2">Total Profit</h3>
+                        <p class="text-2xl text-green-600">$5,000</p>
+                    </div>
+                    <div class="bg-yellow-200 p-4 rounded-lg shadow-md text-center">
+                        <h3 class="text-lg font-semibold text-yellow-800 mb-2">Number of Products</h3>
+                        <p id="productNumber" class="text-2xl text-yellow-600">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-white mb-4">Contact Information</h2>
+                <div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-white mb-2">Name</label>
+                        <input id="inputSellerName" type="text" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" placeholder="Your Name">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-white mb-2">Email</label>
+                        <input id="inputSellerEmail" type="email" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" placeholder="Your Email">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-white mb-2">Mobile Number</label>
+                        <input id="inputSellerMobile" type="tel" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" placeholder="Your Mobile Number">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-white mb-2">Address</label>
+                        <textarea id="inputSellerAddress" class="mt-1 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" rows="3" placeholder="Your Address"></textarea>
+                    </div>
+                    <button id="update" class="bg-pink-600 text-white py-2 px-4 rounded-md hover:bg-pink-700 transition duration-300">Update</button>
+                </div>
+            </div>
+        </div>
+        
+        
+
+    </div>
+  <script src="sellerWebsite.js"></script>
+</body>
+</html>
+
